@@ -1,0 +1,176 @@
+<apex:page standardcontroller="Bezoekverslag__c" sidebar="false" showHeader="false" standardStylesheets="false"  contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document#{!Bezoekverslag__c.Name} {!Bezoekverslag__c.Datum__c}.doc" cache="true"  applyHtmlTag="false"   applyBodyTag="false"> 
+
+<!-- <apex:stylesheet value="{!URLFOR($Resource.style_resources, 'CustomCss.css')}"/> -->
+
+          <div align="right" class="logo"><apex:image url="https://c.eu6.visual.force.com/resource/1474528440000/LogoBedrijf" /></div>
+<!--          <div class="logo1"><apex:image url="https://c.eu6.content.force.com/servlet/servlet.ImageServer?id=015580000015i0j&oid=00D58000000a6ka&lastMod=1474532999000" /></div>     
+
+<head>
+                        <meta http-equiv="Content-Type"  content="text/html;charset=UTF-8" />
+</head>
+
+<img src="https://c.eu6.content.force.com/servlet/servlet.ImageServer?id=015580000015i0j&oid=00D58000000a6ka&lastMod=1474532999000" alt="Logo-CLB" />
+
+-->
+
+      <style>
+          
+          p.MsoFooter, li.MsoFooter, div.MsoFooter{
+                  
+                    mso-pagination:widow-orphan; 
+                    
+                }
+                @page Section1{
+                   
+                   
+                    mso-footer:f1; 
+                   
+                }
+                div.Section1{
+                    page:Section1;
+                }
+  <!--              /*Below is the style to prevent the repetition of header and Footer.. Cheers!!!*/
+                table#hrdftrtbl{
+                    margin:0in 0in 0in 9in;
+                }       
+            @page {
+            margin: 1px 50px 225px 50px; 
+            size:A4;
+            Padding-top:30px;
+            
+            @top-center { 
+            content : element(header);
+            }
+            
+            @bottom-center {
+            content : element(footer);
+            height:200px;
+            padding-top:10px;
+             margin:0in; 
+             mso-pagination:widow-orphan;
+            }  
+                            
+            } 
+            body { font-family: 'Arial Unicode MS'; }
+            .companyName { font: bold 30px; color: red; }  
+            table {width:100%; border-spacing:0; border-collapse:collapse; border-width: 1px; border-color:#C0C0C0;border-style:solid;} 
+            .header-table-data { border-width: 1px; border-color:Black;border-style:solid;background-color:#FFFFFF;
+            color:Black; font-size:14px; font-family:Verdana;
+            text-align:center;}
+            .header-table-heading {border-width: 1px; border-color:Black;border-style:solid;background-color:#C0C0C0; 
+            font-weight:bold;color:Black; font-size:14px; font-family:Verdana;
+            text-align:center;}
+            .header-data { border-width: 0px; border-color:Black;border-style:solid;background-color:#FFFFFF;
+            color:Black; font-size:12px; font-family:Verdana;text-align:left; padding-right: 10px;}
+            
+            .header-heading {border-width: 0px; border-color:Black;border-style:solid; 
+            font-weight:bold;color:Black; font-size:14px; font-family:Verdana;
+            text-align:left;}
+            -->
+        </style>   
+     
+    <body>
+            <!-- Content -->
+            <div class="Section1"><!--Section1 div starts-->
+                <!-- Page 1 starts -->
+<br></br>
+
+
+
+<table cellspacing="0" cellpadding="0" width="100%" border="0" style="font-size:9px;font-family: Verdana;">
+    <tr><th align="left" style="font-size:11px;font-family: Verdana;  color: #0098D1;">Bezoekverslag</th></tr>
+    <tr><td height="15"></td></tr>
+    <tr bgcolor="Silver"><th align="left">Algemene informatie</th><th></th></tr>
+    <tr></tr>
+    <tr><td>Datum</td><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Datum__c}"/></td></tr>
+    <tr><td>Account</td><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Account__r.Name}"/></td></tr>
+    <tr><td>Locatie</td><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Locatie__c}"/></td></tr>
+    <tr><td>Gerelateerde Verkoopkans</td><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Gerelateerde_verkoopkans__r.Name}"/></td></tr>
+    <tr><td>Notulist</td><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Notulist__c}"/></td></tr>
+    <tr><td height="15"></td></tr>
+    <tr bgcolor="Silver"><th align="left">Gespreksverslag</th></tr>
+    <tr><td><b><i>Gespreksdoel</i></b></td></tr>
+    <tr><td height="15"></td></tr>
+    <tr><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Gespreksdoel__c}"/></td></tr>
+    <tr><td height="15"></td></tr>
+    <tr><td><b><i>Gespreksverslag</i></b></td></tr>
+    <tr><td height="15"></td></tr>
+    <tr><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Gespreksverslag__c}"/></td></tr>
+    <tr><td height="15"></td></tr> 
+    <tr bgcolor="Silver"><th align="left">Besluiten</th></tr>
+    <tr><td><b><i>Besluiten</i></b></td></tr>
+    <tr><td class="header-data"><apex:outputField value="{!Bezoekverslag__c.Besluiten__c}"/></td></tr>
+    <tr><td height="15"></td></tr>
+    <tr bgcolor="Silver"><th align="left">Acties CLB</th><th></th></tr>
+    <tr><td height="15"></td></tr>
+    
+<apex:repeat value="{!Bezoekverslag__c.OpenActivities}" var="c"> 
+    <tr><td>Onderwerp</td><td class="header-data"><apex:outputText value=" {!c.Subject}"></apex:outputText></td></tr>
+    <tr><td>Toegewezen aan</td><td class="header-data"> <apex:outputText value=" {!c.owner.Name}"></apex:outputText></td></tr>
+    <tr><td>Naam</td><td class="header-data"><apex:outputText value=" {!c.Who.Name}"></apex:outputText></td></tr>
+    <tr><td>Gerelateerd aan</td><td class="header-data"><apex:outputText value=" {!c.What.Name}"></apex:outputText></td></tr>
+    <tr><td>Vervaldatum</td><td class="header-data"><apex:outputText value=" {!c.ActivityDate}"></apex:outputText></td></tr>
+    <tr><td>Prioriteit</td><td class="header-data"><apex:outputText value=" {!c.Priority}"></apex:outputText></td></tr>
+    <tr><td>Status</td><td class="header-data"><apex:outputText value=" {!c.Status}"></apex:outputText></td></tr>
+    <tr><td>Opmerkingen</td><td class="header-data"><apex:outputText value=" {!c.Description}"></apex:outputText></td></tr>
+</apex:repeat>   
+        
+    <tr bgcolor="Silver"><th align="left">Acties klant</th></tr>
+         
+<apex:repeat value="{!Bezoekverslag__c.Bezoekverslag_klant_taken__r}" var="c"> 
+    <tr><td>Bezoekverslag klant taken id</td><td class="header-data"> <apex:outputText value=" {!c.Name}"></apex:outputText></td></tr>
+    <tr><td>Onderwerp</td><td class="header-data"> <apex:outputText value=" {!c.Onderwerp__c}"></apex:outputText></td></tr>
+    <tr><td>Toegewezen aan</td><td class="header-data"> <apex:outputText value=" {!c.Toegewezen_aan__c}"></apex:outputText></td></tr>
+    <tr><td>Vervaldatum</td><td class="header-data"> <apex:outputText value=" {!c.Vervaldatum__c}"></apex:outputText></td></tr>
+    <tr><td>Prioriteit</td><td class="header-data"> <apex:outputText value=" {!c.Prioriteit__c}"></apex:outputText></td></tr>
+    <tr><td>Status</td><td class="header-data"> <apex:outputText value=" {!c.Status__c}"></apex:outputText></td></tr>
+    <tr><td>Opmerking</td><td class="header-data"> <apex:outputText value=" {!c.Opmerking__c}"></apex:outputText></td></tr>
+</apex:repeat>
+        
+    <tr><td height="15"></td></tr>   
+        
+    <tr bgcolor="Silver"><th align="left">Klanttevredenheid</th></tr>
+
+<apex:repeat value="{!Bezoekverslag__c.Klanttevredenheid__r}" var="c"> 
+    <tr><td>KlanttevredenheidID</td><td class="header-data"><apex:outputText value=" {!c.Name}"></apex:outputText></td></tr>
+    <tr><td>Geinterviewde</td><td class="header-data"><apex:outputText value=" {!c.Geinterviewde__r.Name}"></apex:outputText></td></tr>
+    <tr><td>Instelling</td><td class="header-data"><apex:outputText value=" {!c.Instelling__r.Name}"></apex:outputText></td></tr>
+    <tr><td>Datum afname</td><td class="header-data"><apex:outputText value=" {!c.Datum_afname__c}"></apex:outputText></td></tr>
+    <tr><td>Instelling</td><td class="header-data"><apex:outputText value=" {!c.Instelling__r.Name}"></apex:outputText></td></tr>
+    <tr><td>Systeem voldoet aan verwachting</td><td class="header-data"><apex:outputText value=" {!c.Systeem_voldoet_aan_verwachting__c}"></apex:outputText></td></tr>
+    <tr><td>Toelichting systeem verwachting</td><td class="header-data"><apex:outputText value=" {!c.Toelichting__c}"></apex:outputText></td></tr>
+    <tr><td>Tevredenheid dienstverlening</td><td class="header-data"><apex:outputText value=" {!c.Tevredenheid_dienstverlening__c}"></apex:outputText></td></tr>
+    <tr><td>Toelichting tevredenheid dienstverlening</td><td class="header-data"><apex:outputText value=" {!c.Toelichting_systeem_verwachting__c}"></apex:outputText></td></tr>
+    <tr><td>Tevredenheid communicatie</td><td class="header-data"><apex:outputText value=" {!c.Tevredenheid_communicatie__c}"></apex:outputText></td></tr>
+    <tr><td>Toelichting tevredenheid communicatie</td><td class="header-data"> <apex:outputText value=" {!c.Toelichting_tevredenheid_communicatie__c}"></apex:outputText></td></tr>
+    <tr><td>Gemiddelde tevredenheid</td><td class="header-data"> <apex:outputText value=" {!c.Gemiddelde_Tevredenheid__c}"></apex:outputText></td></tr>
+    <tr><td height="15"></td></tr>
+</apex:repeat>
+        
+        <tr><td height="15"></td></tr>
+    <tr bgcolor="Silver"><th align="left">Bezoekverslag deelnemers</th></tr>
+        
+<apex:repeat value="{!Bezoekverslag__c.Bezoekverslag_deelnemers_del__r}" var="c"> 
+    <tr><td>Contactpersoon</td><td class="header-data"> <apex:outputText value=" {!c.Contactpersoon__r.Name}"></apex:outputText></td></tr>
+    <tr><td>Status</td><td class="header-data"><apex:outputText value=" {!c.Status__c}"></apex:outputText></td></tr>    
+    <tr><td height="15"></td></tr>
+</apex:repeat>   
+         
+ </table>
+                <table id='hrdftrtbl' border='1' cellspacing='0' cellpadding='0'>
+                    <tr><td>
+                            <!--Footer-->
+                            <div style='mso-element:footer' id="f1">
+                                <p class="MsoFooter">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr><td width="30%"><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!TODAY()}" /></apex:outputText></td><td align="center" width="30%"> Bezoekverslag:{!Bezoekverslag__c.Name}</td></tr>
+                               </table>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div><!--Section1 div ends-->
+        </body>
+    
+</apex:page>
